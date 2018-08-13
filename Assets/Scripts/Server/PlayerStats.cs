@@ -58,11 +58,15 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void TargetFound(int cardID)
+    public void TargetFound(GameObject cardTarget)
     {
-        int testiID;
-        testiID = thisPlayersDeck[cardID];
-        server.SendMessage(playerID, 2, testiID);
+        for (int i = 0; i < theDeck.listOfCards.Count; i++)
+        {
+            if(theDeck.listOfCards[i].targetObject == cardTarget)
+            {
+                server.SendMessage(playerID, 2, theDeck.listOfCards[i].cardID);
+            }
+        }
     }
     
 }
