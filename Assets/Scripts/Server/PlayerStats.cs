@@ -64,7 +64,17 @@ public class PlayerStats : MonoBehaviour
         {
             if(theDeck.listOfCards[i].targetObject == cardTarget)
             {
-                server.SendMessage(playerID, 2, theDeck.listOfCards[i].cardID);
+                int targetID = theDeck.listOfCards[i].cardID;
+
+                for (int x = 0; x < thisPlayersDeck.Length; x++)
+                {
+                    if (targetID == thisPlayersDeck[x])
+                    {
+                        server.SendMessage(playerID, 2, theDeck.listOfCards[i].cardID);
+                        return;
+                    }
+                }
+                
             }
         }
     }

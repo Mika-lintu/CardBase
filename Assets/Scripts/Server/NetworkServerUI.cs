@@ -13,6 +13,8 @@ public class NetworkServerUI : MonoBehaviour
 
     public GameObject player1;
     public GameObject player2;
+    public GameObject player3;
+    public GameObject player4;
 
     int playercount = 0;
 
@@ -55,16 +57,32 @@ public class NetworkServerUI : MonoBehaviour
             {
                 case 1:
                     SendMessage(1, 0, 1);
+                    deckManager.players[0].SetActive(true);
                     deckManager.players[0].GetComponent<PlayerStats>().playerID = 1;
+                    player1 = deckManager.players[0];
                     break;
                 case 2:
                     SendMessage(2, 0, 2);
+                    deckManager.players[1].SetActive(true);
                     deckManager.players[1].GetComponent<PlayerStats>().playerID = 2;
+                    player2 = deckManager.players[1];
+                    break;
+                case 3:
+                    SendMessage(3, 0, 3);
+                    deckManager.players[2].SetActive(true);
+                    deckManager.players[2].GetComponent<PlayerStats>().playerID = 2;
+                    player3 = deckManager.players[2];
+                    break;
+                case 4:
+                    SendMessage(4, 0, 4);
+                    deckManager.players[3].SetActive(true);
+                    deckManager.players[3].GetComponent<PlayerStats>().playerID = 2;
+                    player4 = deckManager.players[3];
                     break;
                 default:
                     break;
             }
-            //deckManager.players[0].GetComponent<PlayerStats>().playerID  = 1;
+            
         }
     }
 
@@ -167,6 +185,10 @@ public class NetworkServerUI : MonoBehaviour
                 return player1.GetComponent<PlayerInput>();
             case 2:
                 return player2.GetComponent<PlayerInput>();
+            case 3:
+                return player3.GetComponent<PlayerInput>();
+            case 4:
+                return player4.GetComponent<PlayerInput>();
             default:
                 break;
         }
